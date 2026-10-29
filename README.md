@@ -1,60 +1,27 @@
 # CareerPilot AI
 
-Upload your resume, track the jobs you apply to, see how well your resume matches each one, and practise interview questions with AI feedback.
+An AI-powered career assistance platform.
 
-- **Backend:** Spring Boot 3.3 (Java 17+), Spring Security with JWT, JPA, PostgreSQL, Gemini API
-- **Frontend:** React 18 + Vite, React Router, Axios
+## 🚀 Live Demo
 
-## Run it locally (two terminals)
+**Try CareerPilot AI:** https://careerpilot-ai-1-zv8k.onrender.com
+<img width="1917" height="880" alt="image" src="https://github.com/user-attachments/assets/393ad991-ccf2-42b4-873b-d1491746360f" />
+<img width="1542" height="835" alt="image" src="https://github.com/user-attachments/assets/1044a900-7618-435a-b587-926f43b112a5" />
 
-You need Java 17+, Maven 3.9+ and Node 20+. The `dev` profile uses an in-memory database, so no PostgreSQL is needed.
+## 🛠️ Tech Stack
 
-**1. Backend**
+- **Frontend:** React, Vite
+- **Backend:** Java, Spring Boot
+- **Database:** PostgreSQL
+- **AI:** Google Gemini API
 
-```bash
-cd backend
-export GEMINI_API_KEY=your-key          # optional: only the AI features need it
-mvn test                                 # run the tests
-mvn spring-boot:run -Dspring-boot.run.profiles=dev
-# check: curl http://localhost:8080/actuator/health
-```
+## ✨ Features
 
-On Windows PowerShell use `$env:GEMINI_API_KEY="your-key"`.
+- User registration and login
+- AI-powered career assistance
+- Career-related tools and features
 
-**2. Frontend**
+## 🔗 Repository
 
-```bash
-cd frontend
-npm install
-npm run dev                              # http://localhost:5173
-```
+Source code: https://github.com/Reshma3194/careerpilot-ai
 
-Vite proxies `/api` to `http://localhost:8080`.
-
-## Run with Docker (PostgreSQL + backend + frontend)
-
-```bash
-cp .env.example .env                     # set JWT_SECRET and GEMINI_API_KEY
-docker compose up --build
-# app: http://localhost:3000   API: http://localhost:8080
-```
-
-## Configuration
-
-| Variable | Purpose | Default |
-|---|---|---|
-| `JWT_SECRET` | Token signing key, at least 32 characters. **Required** outside the `dev` profile | none |
-| `GEMINI_API_KEY` | Enables resume analysis and interview prep | none (AI endpoints return 503) |
-| `GEMINI_MODEL` | Gemini model name | `gemini-2.5-flash` |
-| `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` | PostgreSQL connection | local `careerpilot` database |
-| `CORS_ALLOWED_ORIGINS` | Comma separated allowed origins | `http://localhost:5173` |
-
-## Project layout
-
-See `docs/api-documentation.md` for every endpoint (with curl examples) and `docs/database-schema.md` for the tables.
-
-```
-backend/   Spring Boot API   (controller, service, repository, entity, dto, security, ai, config)
-frontend/  React app         (pages, components, services, context, utils)
-docs/      API and schema docs
-```
